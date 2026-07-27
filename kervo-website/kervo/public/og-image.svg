@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#000000"/>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#2563FF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#2563FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g fill="#FFFFFF" transform="translate(540,205) scale(1.7)">
+    <path d="M140 64c-17.7 0-32 14.3-32 32v320c0 17.7 14.3 32 32 32s32-14.3 32-32V96c0-17.7-14.3-32-32-32z"/>
+    <path d="M249.4 236.6 388.9 96.1c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L214.1 181.3c-11.9 11.9-11.9 31.2 0 43.1L343.6 354c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L249.4 236.6z"/>
+  </g>
+  <text x="600" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" font-weight="700" fill="#FFFFFF" letter-spacing="14">KERVO</text>
+  <text x="600" y="472" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#9C9CA3" letter-spacing="6">SOFTWARE THAT EMPOWERS</text>
+</svg>
