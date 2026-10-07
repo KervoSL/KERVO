@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Reveal from "./Reveal";
 
 export default function Careers() {
@@ -15,12 +16,12 @@ export default function Careers() {
             If that&apos;s you, an introduction is never a bad idea. Reach out
             and tell us what you&apos;d want to build.
           </p>
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             className="mt-9 inline-flex items-center rounded-full border border-white/15 text-white text-sm font-medium px-7 py-3.5 transition-colors duration-300 hover:border-white/40 hover:bg-white/5"
           >
             Say hello
-          </a>
+          </Link>
         </Reveal>
       </div>
     </section>

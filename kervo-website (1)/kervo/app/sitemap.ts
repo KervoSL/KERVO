@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
-const SITE_URL = "https://kervo.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/privacy", "/terms"];
+  const routes = ["", "/about", "/privacy", "/terms"];
   return routes.map((route) => ({
     url: `${SITE_URL}${route}`,
     lastModified: new Date(),

@@ -1,33 +1,80 @@
 import Link from "next/link";
+import LogoMark from "./Logo";
+import { PRODUCTS } from "@/lib/products";
+import { CONTACT_EMAIL, EXTERNAL_LINKS } from "@/lib/site";
+
+const COLUMNS: { title: string; links: { label: string; href: string; external?: boolean }[] }[] = [
+  {
+    title: "Products",
+    links: [
+      ...PRODUCTS.filter((p) => p.href).map((p) => ({ label: p.name, href: p.href as string, external: true })),
+      { label: "All products", href: "/#products" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/#contact" },
+      { label: "GitHub", href: EXTERNAL_LINKS.github, external: true },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+    ],
+  },
+];
+
+const linkClass = "text-sm text-neutral-400 hover:text-white transition-colors duration-300";
 
 export default function Footer() {
   return (
     <footer className="relative bg-black border-t border-white/10">
-      <div className="mx-auto max-w-content px-6 md:px-10 py-16">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
-          <div>
-            <div className="flex items-center gap-2.5">
-              <svg width="18" height="18" viewBox="0 0 512 512" fill="currentColor" className="text-white">
-                <path d="M140 64c-17.7 0-32 14.3-32 32v320c0 17.7 14.3 32 32 32s32-14.3 32-32V96c0-17.7-14.3-32-32-32z" />
-                <path d="M249.4 236.6 388.9 96.1c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L214.1 181.3c-11.9 11.9-11.9 31.2 0 43.1L343.6 354c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L249.4 236.6z" />
-              </svg>
+      <div className="mx-auto max-w-content px-6 md:px-10 pt-16 pb-10">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-x-8 gap-y-12">
+          <div className="col-span-2 md:col-span-5">
+            <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Kervo home">
+              <LogoMark size={20} />
               <span className="text-sm font-semibold tracking-wordmark uppercase text-white">Kervo</span>
-            </div>
-            <p className="mt-4 text-sm text-neutral-500 max-w-xs">Software That Empowers.</p>
+            </Link>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-neutral-500">
+              A technology company creating its own digital products.
+            </p>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="mt-5 inline-block text-sm text-neutral-300 hover:text-white transition-colors duration-300"
+            >
+              {CONTACT_EMAIL}
+            </a>
           </div>
 
-          <nav className="grid grid-cols-2 sm:grid-cols-3 gap-x-10 gap-y-3 text-sm">
-            <a href="#products" className="text-neutral-400 hover:text-white transition-colors">Products</a>
-            <a href="#principles" className="text-neutral-400 hover:text-white transition-colors">Principles</a>
-            <a href="#careers" className="text-neutral-400 hover:text-white transition-colors">Careers</a>
-            <a href="#contact" className="text-neutral-400 hover:text-white transition-colors">Contact</a>
-            <Link href="/privacy" className="text-neutral-400 hover:text-white transition-colors">Privacy</Link>
-            <Link href="/terms" className="text-neutral-400 hover:text-white transition-colors">Terms</Link>
-          </nav>
+          {COLUMNS.map((col) => (
+            <nav key={col.title} aria-label={col.title} className="col-span-1 md:col-span-2">
+              <h2 className="text-[12px] uppercase tracking-wide text-neutral-500">{col.title}</h2>
+              <ul className="mt-5 space-y-3">
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    {l.external ? (
+                      <a href={l.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                        {l.label}
+                      </a>
+                    ) : (
+                      <Link href={l.href} className={linkClass}>
+                        {l.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="text-xs text-neutral-600">© {new Date().getFullYear()} KERVO. All rights reserved.</p>
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <p className="text-xs text-neutral-600">© {new Date().getFullYear()} Kervo SL. All rights reserved.</p>
           <p className="text-xs text-neutral-600">Designed and built in-house.</p>
         </div>
       </div>

@@ -1,24 +1,18 @@
 import Hero from "@/components/Hero";
-import WhoWeAre from "@/components/WhoWeAre";
+import Intro from "@/components/Intro";
 import Products from "@/components/Products";
-import Principles from "@/components/Principles";
-import Technology from "@/components/Technology";
-import Timeline from "@/components/Timeline";
-import WhyKervo from "@/components/WhyKervo";
-import Careers from "@/components/Careers";
+import Philosophy from "@/components/Philosophy";
+import AboutTeaser from "@/components/AboutTeaser";
 import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <WhoWeAre />
+      <Intro />
       <Products />
-      <Principles />
-      <Technology />
-      <Timeline />
-      <WhyKervo />
-      <Careers />
+      <Philosophy />
+      <AboutTeaser />
       <Contact />
     </>
   );

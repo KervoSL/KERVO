@@ -3,29 +3,20 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
-
-const SITE_URL = "https://kervo.com";
+import { PRODUCTS } from "@/lib/products";
+import { SITE_DESCRIPTION, SITE_URL, TAGLINE, EXTERNAL_LINKS } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "KERVO — Software That Empowers.",
-    template: "%s — KERVO",
+    default: "Kervo — Building products for the way people live, work and manage their world",
+    template: "%s — Kervo",
   },
-  description:
-    "KERVO builds world-class software — MoneyNest, TradeVault, Axiora and beyond — engineered with craftsmanship, privacy and performance at the core.",
-  keywords: [
-    "KERVO",
-    "software company",
-    "MoneyNest",
-    "TradeVault",
-    "Axiora",
-    "software craftsmanship",
-    "product studio",
-  ],
-  authors: [{ name: "KERVO" }],
-  creator: "KERVO",
-  applicationName: "KERVO",
+  description: SITE_DESCRIPTION,
+  keywords: ["Kervo", "technology company", "digital products", ...PRODUCTS.filter((p) => p.href).map((p) => p.name)],
+  authors: [{ name: "Kervo" }],
+  creator: "Kervo",
+  applicationName: "Kervo",
   robots: {
     index: true,
     follow: true,
@@ -44,18 +35,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    siteName: "KERVO",
-    title: "KERVO — Software That Empowers.",
-    description:
-      "World-class software, built with craftsmanship, privacy and performance at the core.",
-    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "KERVO" }],
+    siteName: "Kervo",
+    title: "Kervo — Building products for the way people live, work and manage their world",
+    description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: "KERVO — Software That Empowers.",
-    description:
-      "World-class software, built with craftsmanship, privacy and performance at the core.",
-    images: ["/og-image.svg"],
+    title: "Kervo — Building products for the way people live, work and manage their world",
+    description: SITE_DESCRIPTION,
   },
 };
 
@@ -68,16 +55,13 @@ export const viewport: Viewport = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "KERVO",
+  name: "Kervo",
+  legalName: "Kervo SL",
   url: SITE_URL,
-  slogan: "Software That Empowers.",
-  description:
-    "KERVO is a software company building world-class products including MoneyNest, TradeVault and Axiora.",
-  brand: [
-    { "@type": "Brand", name: "MoneyNest" },
-    { "@type": "Brand", name: "TradeVault" },
-    { "@type": "Brand", name: "Axiora" },
-  ],
+  slogan: TAGLINE,
+  description: SITE_DESCRIPTION,
+  sameAs: [EXTERNAL_LINKS.github],
+  brand: PRODUCTS.filter((p) => p.href).map((p) => ({ "@type": "Brand", name: p.name, url: p.href })),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
