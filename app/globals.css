@@ -3,108 +3,260 @@
 @tailwind utilities;
 
 :root {
-  --font-inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color-scheme: dark;
+  /* Kervo */
+  --paper: #f5f6f8;
+  --surface: #ffffff;
+  --ink: #0a0f1e;
+  --muted: #566074;
+  --line: #dde1e8;
+  --blue: #2457f5;
+
+  /* Product stage (matches MoneyNest's own dark UI) */
+  --stage: #0a0e17;
+  --stage-2: #111827;
+  --stage-line: rgba(255, 255, 255, 0.09);
+  --stage-text: #e8eff7;
+  --stage-muted: rgba(232, 239, 247, 0.66);
+  --mint: #00d4aa;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --header-h: 64px;
 }
 
-* {
-  box-sizing: border-box;
+@media (min-width: 768px) {
+  :root {
+    --header-h: 72px;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  background: var(--paper);
 }
 
 body {
-  background: #000000;
-  color: #FFFFFF;
-  font-family: var(--font-inter);
-  overflow-x: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: clip;
 }
 
 ::selection {
-  background: #2563FF;
-  color: #FFFFFF;
+  background: var(--blue);
+  color: #fff;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #000000;
-}
-::-webkit-scrollbar-thumb {
-  background: #38383C;
-  border-radius: 999px;
-  border: 2px solid #000000;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #525257;
-}
-
-/* Keyboard focus visibility — always respected, never removed */
 :focus-visible {
-  outline: 2px solid #2563FF;
-  outline-offset: 4px;
-  border-radius: 2px;
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.stage :focus-visible {
+  outline-color: var(--mint);
 }
 
-/* Reduced motion */
+@layer components {
+  /* ---------- layout ---------- */
+  .container-x {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-x {
+      padding-inline: 2.5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .container-x {
+      padding-inline: 3rem;
+    }
+  }
+
+  .section {
+    padding-block: clamp(4.5rem, 3rem + 7vw, 9rem);
+  }
+
+  /* ---------- type scale ---------- */
+  .t-display {
+    font-size: clamp(2.5rem, 1.15rem + 5.9vw, 5.75rem);
+    line-height: 1.01;
+    letter-spacing: -0.042em;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+  .t-h2 {
+    font-size: clamp(2rem, 1.25rem + 3.1vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.032em;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+  .t-h3 {
+    font-size: clamp(1.2rem, 1.05rem + 0.65vw, 1.55rem);
+    line-height: 1.2;
+    letter-spacing: -0.018em;
+    font-weight: 600;
+  }
+  .t-lead {
+    font-size: clamp(1.0625rem, 0.98rem + 0.42vw, 1.3125rem);
+    line-height: 1.5;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+  .t-body {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+  .stage .t-lead,
+  .stage .t-body {
+    color: var(--stage-muted);
+  }
+
+  /* ---------- dark product stage ---------- */
+  .stage {
+    background: var(--stage);
+    color: var(--stage-text);
+  }
+
+  /* ---------- link underline that draws in ---------- */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.45s var(--ease);
+  }
+  .link-draw:hover,
+  .link-draw:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* ---------- orchestrated load sequence (hero) ---------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  opacity: 0;
+  animation: rise 1s var(--ease) forwards;
+  animation-delay: calc(var(--i, 0) * 110ms + 60ms);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fade 0.5s var(--ease) both;
+}
+
+/* ---------- ecosystem diagram ----------
+   Lines draw in once, when the diagram scrolls into view. */
+.eco-line {
+  background: var(--ink);
+  transition: transform 0.7s var(--ease);
+}
+[data-reveal="armed"] .eco-line {
+  transform: scale(0);
+}
+.eco-trunk {
+  width: 1px;
+  height: 2.5rem;
+  transform-origin: top;
+  margin-inline: auto;
+}
+.eco-rail {
+  height: 1px;
+  transform-origin: center;
+  transition-delay: 0.35s;
+}
+.eco-drop {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 2.5rem;
+  transform-origin: top;
+  transition-delay: 0.7s;
+}
+.eco-node {
+  opacity: 1;
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+[data-reveal="armed"] .eco-node {
+  opacity: 0;
+  transform: translateY(10px);
+}
+[data-reveal="in"] .eco-node {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(var(--n, 0) * 140ms + 0.9s);
+}
+[data-reveal="in"] .eco-root {
+  transition-delay: 0s;
+}
+
+@media (max-width: 767px) {
+  .eco-trunk,
+  .eco-rail,
+  .eco-drop {
+    display: none;
+  }
+  .eco-mobile-rail {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    transform-origin: top;
+  }
+  .eco-stub {
+    position: absolute;
+    left: -1.5rem;
+    top: 2.25rem;
+    width: 1.5rem;
+    height: 1px;
+    transform-origin: left;
+    transition-delay: 0.5s;
+  }
+}
+@media (min-width: 768px) {
+  .eco-mobile-rail,
+  .eco-stub {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise {
+    opacity: 1;
+    animation: none;
+  }
   *,
   *::before,
   *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
   }
-}
-
-/* Custom cursor — desktop, fine-pointer only */
-@media (hover: hover) and (pointer: fine) {
-  .cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    background: #2563FF;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    will-change: transform;
-  }
-  .cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 32px;
-    height: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    will-change: transform;
-    transition: width 0.25s cubic-bezier(0.16,1,0.3,1), height 0.25s cubic-bezier(0.16,1,0.3,1), border-color 0.25s;
-  }
-}
-
-.text-balance {
-  text-wrap: balance;
-}
-
-.grain::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }

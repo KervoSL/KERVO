@@ -1,28 +1,28 @@
 import type { Metadata, Viewport } from "next";
+import "@fontsource-variable/schibsted-grotesk/index.css";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import JsonLd from "@/components/ui/JsonLd";
 import { PRODUCTS } from "@/lib/products";
-import { SITE_DESCRIPTION, SITE_URL, TAGLINE, EXTERNAL_LINKS } from "@/lib/site";
+import { DESCRIPTION, GITHUB_URL, LEGAL_NAME, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/site";
+
+const DEFAULT_TITLE = `${SITE_NAME} — ${TAGLINE.replace(/\.$/, "")}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: "Kervo — Building products for the way people live, work and manage their world",
-    template: "%s — Kervo",
-  },
-  description: SITE_DESCRIPTION,
-  keywords: ["Kervo", "technology company", "digital products", ...PRODUCTS.filter((p) => p.href).map((p) => p.name)],
-  authors: [{ name: "Kervo" }],
-  creator: "Kervo",
-  applicationName: "Kervo",
+  title: { default: DEFAULT_TITLE, template: `%s — ${SITE_NAME}` },
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  keywords: ["Kervo", "technology company", "digital products", ...PRODUCTS.map((p) => p.name)],
+  alternates: { canonical: "/" },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
-  alternates: { canonical: "/" },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -31,59 +31,64 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.svg",
   },
-  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
-    url: SITE_URL,
-    siteName: "Kervo",
-    title: "Kervo — Building products for the way people live, work and manage their world",
-    description: SITE_DESCRIPTION,
+    siteName: SITE_NAME,
+    url: "/",
+    title: DEFAULT_TITLE,
+    description: DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kervo — Building products for the way people live, work and manage their world",
-    description: SITE_DESCRIPTION,
+    title: DEFAULT_TITLE,
+    description: DESCRIPTION,
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#f5f6f8",
   width: "device-width",
   initialScale: 1,
 };
 
-const structuredData = {
+const organization = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Kervo",
-  legalName: "Kervo SL",
+  "@id": `${SITE_URL}/#organization`,
+  name: SITE_NAME,
+  legalName: LEGAL_NAME,
   url: SITE_URL,
+  logo: `${SITE_URL}/icon-512.svg`,
   slogan: TAGLINE,
-  description: SITE_DESCRIPTION,
-  sameAs: [EXTERNAL_LINKS.github],
-  brand: PRODUCTS.filter((p) => p.href).map((p) => ({ "@type": "Brand", name: p.name, url: p.href })),
+  description: DESCRIPTION,
+  sameAs: [GITHUB_URL],
+};
+
+const website = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: SITE_NAME,
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <script
-          type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      </head>
-      <body>
+      <body className="font-sans antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[10000] focus:bg-accent focus:text-white focus:px-4 focus:py-2 focus:rounded-full"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-white"
         >
           Skip to content
         </a>
-        <CustomCursor />
-        <Navigation />
-        <main id="main">{children}</main>
+        <JsonLd data={organization} />
+        <JsonLd data={website} />
+        <Header />
+        <main id="main" className="pt-[var(--header-h)]">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

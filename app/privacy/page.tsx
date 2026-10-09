@@ -1,76 +1,63 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import LegalPage, { LegalSection } from "@/components/legal/LegalPage";
+import { CONTACT_EMAIL, LEGAL_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How KERVO handles data across its products and this website.",
+  description: "How Kervo handles personal data on this website and across its products.",
   alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {
   return (
-    <section className="relative bg-black pt-[150px] pb-32 min-h-screen">
-      <div className="mx-auto max-w-3xl px-6 md:px-10">
-        <span className="text-[13px] tracking-wordmark uppercase text-neutral-500">Legal</span>
-        <h1 className="mt-5 text-[32px] md:text-[44px] font-semibold text-white leading-tight">
-          Privacy Policy
-        </h1>
-        <p className="mt-4 text-sm text-neutral-500">Last updated: July 2026</p>
+    <LegalPage
+      title="Privacy Policy"
+      intro="How Kervo handles personal data on this website and, in general terms, across its products."
+    >
+      <LegalSection title="1. Who is responsible">
+        <p>
+          {LEGAL_NAME} is responsible for this website. You can reach us at{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="link-draw text-ink">
+            {CONTACT_EMAIL}
+          </a>
+          . Our full company details are in the Legal notice.
+        </p>
+      </LegalSection>
 
-        <div className="mt-12 space-y-10 text-neutral-400 leading-relaxed">
-          <p>
-            This is a placeholder Privacy Policy for kervo.com and its
-            products. It will be replaced with a complete, legally reviewed
-            policy before public launch.
-          </p>
+      <LegalSection title="2. This website">
+        <p>
+          This website does not ask you for personal data, does not use analytics and does not set
+          advertising or tracking cookies. If you write to us, we use your message and email address
+          only to reply to you.
+        </p>
+        <p>
+          Our hosting provider, Vercel, may process technical request data such as your IP address to
+          deliver and secure the site.
+        </p>
+      </LegalSection>
 
-          <div>
-            <h2 className="text-white text-lg font-semibold mb-3">1. What we collect</h2>
-            <p>
-              KERVO builds local-first software wherever possible. Where data
-              is collected — for example, account details for billing or
-              support — we collect only what is necessary to provide the
-              product or service.
-            </p>
-          </div>
+      <LegalSection title="3. Our products">
+        <p>
+          Kervo builds local-first software wherever possible. Where data is collected, for example
+          account details for billing or support, we collect only what is necessary to provide the
+          product or service. We do not sell personal data, and we do not use it to power advertising.
+        </p>
+        <p>
+          Each product describes in its own privacy policy what it stores and where. Payments are
+          processed by Stripe.
+        </p>
+      </LegalSection>
 
-          <div>
-            <h2 className="text-white text-lg font-semibold mb-3">2. How we use it</h2>
-            <p>
-              Data is used strictly to operate, maintain and improve KERVO
-              products. We do not sell personal data, and we do not use it to
-              power advertising.
-            </p>
-          </div>
+      <LegalSection title="4. Your rights">
+        <p>
+          Depending on where you live, you may have the right to access, correct, export or delete your
+          data. Send requests to the contact above.
+        </p>
+      </LegalSection>
 
-          <div>
-            <h2 className="text-white text-lg font-semibold mb-3">3. Your rights</h2>
-            <p>
-              Depending on your jurisdiction, you may have the right to
-              access, correct, export or delete your data. Requests can be
-              sent to the contact below.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-white text-lg font-semibold mb-3">4. Contact</h2>
-            <p>
-              Questions about this policy can be sent to{" "}
-              <a href="mailto:hello@kervo.com" className="text-white underline underline-offset-4 hover:text-accent">
-                hello@kervo.com
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-
-        <Link
-          href="/"
-          className="mt-16 inline-flex items-center text-sm text-neutral-400 hover:text-white transition-colors"
-        >
-          ← Back to home
-        </Link>
-      </div>
-    </section>
+      <LegalSection title="5. Changes">
+        <p>We may update this policy as our products evolve. The date at the top shows the latest version.</p>
+      </LegalSection>
+    </LegalPage>
   );
 }
