@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { breadcrumbs, pageMeta } from "@/lib/seo";
 import JsonLd from "@/components/ui/JsonLd";
 import MnHero from "@/components/moneynest/MnHero";
 import MnProblem from "@/components/moneynest/MnProblem";
@@ -15,13 +16,7 @@ const TITLE = "MoneyNest — personal finance in one place";
 const DESC =
   "MoneyNest brings accounts, spending, budgets, investments and debts into one private workspace. Local-first, works offline, free to start.";
 
-export const metadata: Metadata = {
-  title: "MoneyNest",
-  description: DESC,
-  alternates: { canonical: "/products/moneynest" },
-  openGraph: { url: "/products/moneynest", title: TITLE, description: DESC },
-  twitter: { title: TITLE, description: DESC },
-};
+export const metadata: Metadata = pageMeta({ title: "MoneyNest", description: DESC, path: "/products/moneynest", ogTitle: TITLE });
 
 const software = {
   "@context": "https://schema.org",
@@ -39,6 +34,7 @@ export default function MoneyNestPage() {
   return (
     <>
       <JsonLd data={software} />
+      <JsonLd data={breadcrumbs([{ name: "Products", path: "/products" }, { name: "MoneyNest", path: "/products/moneynest" }])} />
       <MnHero />
       <MnProblem />
       <MnSolution />

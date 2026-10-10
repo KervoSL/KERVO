@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { breadcrumbs, pageMeta } from "@/lib/seo";
+import JsonLd from "@/components/ui/JsonLd";
 import Link from "next/link";
 import Image from "next/image";
 import Process from "@/components/home/Process";
@@ -6,13 +8,12 @@ import ClosingCta from "@/components/home/ClosingCta";
 import { PRODUCTS } from "@/lib/products";
 import { LEGAL_NAME } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata: Metadata = pageMeta({
+  title: 'About',
   description:
-    "Kervo is the technology company behind MoneyNest and TradeVault. How we think about software, how we build, and where we are going.",
-  alternates: { canonical: "/about" },
-  openGraph: { url: "/about", title: "About Kervo" },
-};
+    'Kervo is the technology company behind MoneyNest and TradeVault. How we think about software, how we build and where we are going.',
+  path: '/about',
+});
 
 const PRINCIPLES = [
   {
@@ -36,6 +37,7 @@ const PRINCIPLES = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbs([{ name: "About", path: "/about" }])} />
       <section className="container-x pb-20 pt-14 md:pb-28 md:pt-24">
         <h1 className="t-display max-w-[13em]">A technology company that builds its own products.</h1>
         <p className="t-lead mt-8 max-w-[38rem]">

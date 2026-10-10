@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import LegalPage, { LegalSection } from "@/components/legal/LegalPage";
 import { CONTACT_EMAIL, LEGAL_NAME } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "How Kervo handles personal data on this website and across its products.",
-  alternates: { canonical: "/privacy" },
-};
+export const metadata: Metadata = pageMeta({
+  title: 'Privacy Policy',
+  description:
+    'How Kervo handles personal data on this website and, in general terms, across its products. Working draft.',
+  path: '/privacy',
+});
 
 export default function PrivacyPage() {
   return (

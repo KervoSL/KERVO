@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import LegalPage, { LegalSection } from "@/components/legal/LegalPage";
 
-export const metadata: Metadata = {
-  title: "Cookies",
-  description: "What this website stores in your browser.",
-  alternates: { canonical: "/cookies" },
-};
+export const metadata: Metadata = pageMeta({
+  title: 'Cookies',
+  description:
+    'What cookies and similar technologies the Kervo website uses, and how to manage them. Working draft.',
+  path: '/cookies',
+});
 
 export default function CookiesPage() {
   return (

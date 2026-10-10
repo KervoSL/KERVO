@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import LegalPage, { LegalSection } from "@/components/legal/LegalPage";
 import { LEGAL_DETAILS } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Legal notice",
-  description: "Company details for Kervo SL.",
-  alternates: { canonical: "/legal-notice" },
-};
+export const metadata: Metadata = pageMeta({
+  title: 'Legal notice',
+  description:
+    'Company identification and legal information about Kervo SL, publisher of this website.',
+  path: '/legal-notice',
+});
 
 export default function LegalNoticePage() {
   return (

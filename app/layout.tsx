@@ -7,7 +7,7 @@ import JsonLd from "@/components/ui/JsonLd";
 import { PRODUCTS } from "@/lib/products";
 import { DESCRIPTION, GITHUB_URL, LEGAL_NAME, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/site";
 
-const DEFAULT_TITLE = `${SITE_NAME} — ${TAGLINE.replace(/\.$/, "")}`;
+const DEFAULT_TITLE = `${SITE_NAME} — A technology company building its own products`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import LegalPage, { LegalSection } from "@/components/legal/LegalPage";
 import { CONTACT_EMAIL } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "The terms that govern use of this website and Kervo products.",
-  alternates: { canonical: "/terms" },
-};
+export const metadata: Metadata = pageMeta({
+  title: 'Terms of Service',
+  description:
+    'The terms that apply to the Kervo website and, in general, to its products. Working draft.',
+  path: '/terms',
+});
 
 export default function TermsPage() {
   return (

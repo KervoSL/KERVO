@@ -2,23 +2,26 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import ClosingCta from "@/components/home/ClosingCta";
+import JsonLd from "@/components/ui/JsonLd";
+import { breadcrumbs, pageMeta } from "@/lib/seo";
 import { getProduct } from "@/lib/products";
 
 const product = getProduct("tradevault")!;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "TradeVault",
   description:
     "TradeVault is a platform to manage capital, operations and trading accounts, built for funded traders. Coming soon from Kervo.",
-  alternates: { canonical: "/products/tradevault" },
-  openGraph: { url: "/products/tradevault", title: "TradeVault — coming soon" },
-};
+  path: "/products/tradevault",
+  ogTitle: "TradeVault, coming soon — Kervo",
+});
 
 const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
 export default function TradeVaultPage() {
   return (
     <>
+      <JsonLd data={breadcrumbs([{ name: "Products", path: "/products" }, { name: "TradeVault", path: "/products/tradevault" }])} />
       <section className="stage">
         <div className="container-x pb-20 pt-14 md:pb-32 md:pt-24 lg:pt-28">
           <div className="rise flex items-center gap-4" style={step(0)}>

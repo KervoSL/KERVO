@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
+import { breadcrumbs, pageMeta } from "@/lib/seo";
+import JsonLd from "@/components/ui/JsonLd";
 import Link from "next/link";
 import { CONTACT_EMAIL, GITHUB_URL } from "@/lib/site";
 import { PRODUCTS } from "@/lib/products";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch with Kervo about our products or the company.",
-  alternates: { canonical: "/contact" },
-  openGraph: { url: "/contact", title: "Contact Kervo" },
-};
+export const metadata: Metadata = pageMeta({
+  title: 'Contact',
+  description:
+    'Get in touch with Kervo about MoneyNest, TradeVault or the company. Write to us by email and we will reply.',
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (
+    <>
+      <JsonLd data={breadcrumbs([{ name: "Contact", path: "/contact" }])} />
     <section className="container-x pb-24 pt-14 md:pb-36 md:pt-24">
       <h1 className="t-display max-w-[10em]">Get in touch.</h1>
       <p className="t-lead mt-7 max-w-[34rem]">
@@ -48,5 +52,6 @@ export default function ContactPage() {
         </div>
       </div>
     </section>
+    </>
   );
 }
