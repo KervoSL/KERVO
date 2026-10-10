@@ -19,7 +19,7 @@ export default function MnProblem() {
             {MN_PROBLEM_ITEMS.map((item) => (
               <li
                 key={item}
-                className="border-t border-line py-3.5 text-[clamp(1.375rem,1.1rem+1.2vw,2rem)] font-medium tracking-[-0.02em] text-[#9aa3b5] last:border-b"
+                className="border-t border-line py-3.5 text-[clamp(1.375rem,1.1rem+1.2vw,2rem)] font-medium tracking-[-0.02em] text-muted last:border-b"
               >
                 {item}
               </li>

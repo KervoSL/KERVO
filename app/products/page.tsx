@@ -20,6 +20,7 @@ export default function ProductsPage() {
         </p>
       </section>
       <div className="container-x pb-24 md:pb-32">
+        <h2 className="sr-only">All products</h2>
         <ProductsShowcase />
       </div>
       <ClosingCta />

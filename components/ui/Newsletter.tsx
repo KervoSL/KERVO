@@ -71,7 +71,7 @@ export default function Newsletter() {
           placeholder="you@example.com"
           aria-describedby="nl-help"
           aria-invalid={state === "error" ? true : undefined}
-          className="h-12 min-w-0 flex-1 rounded-full border border-line bg-paper px-5 text-[16px] text-ink placeholder:text-[#8a93a5] transition-colors focus:border-ink focus:outline-none"
+          className="h-12 min-w-0 flex-1 rounded-full border border-line bg-paper px-5 text-[16px] text-ink placeholder:text-[#6b7385] transition-colors focus:border-ink focus:outline-none"
         />
         <button
           type="submit"

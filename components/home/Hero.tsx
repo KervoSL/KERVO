@@ -13,13 +13,13 @@ export default function Hero() {
       {/* Brand mark, oversized and cropped — the one quiet gesture on the page. */}
       <Parallax
         speed={-0.05}
-        className="pointer-events-none absolute -right-[18%] top-[6%] w-[min(92vw,820px)] sm:-right-[10%] lg:-right-[6%]"
+        className="pointer-events-none absolute -right-[22%] top-[4%] w-[min(80vw,420px)] sm:-right-[8%] lg:right-[2%] lg:top-[12%] lg:w-[min(26vw,380px)]"
       >
-        <KMark size={820} className="h-auto w-full text-[#eceef3]" />
+        <KMark size={430} className="h-auto w-full text-[#e9ebf1]" />
       </Parallax>
 
       <div className="container-x relative">
-        <h1 className="t-display rise max-w-[14em]" style={step(0)}>
+        <h1 className="t-display rise max-w-[11.5em]" style={step(0)}>
           Products for the way people live, work and manage their world.
         </h1>
         <p className="t-lead rise mt-7 max-w-[34rem] md:mt-9" style={step(2)}>

@@ -10,7 +10,6 @@ export default function Home() {
     <>
       <Hero />
       <Statement />
-      <Ecosystem />
       <section className="section border-t border-line" aria-labelledby="products">
         <div className="container-x">
           <h2 id="products" className="t-h2 mb-12 max-w-[16em] md:mb-16">
@@ -19,6 +18,7 @@ export default function Home() {
           <ProductsShowcase />
         </div>
       </section>
+      <Ecosystem />
       <Process />
       <ClosingCta />
     </>

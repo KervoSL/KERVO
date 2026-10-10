@@ -9,7 +9,7 @@ const PILLARS = [
   },
   {
     title: "Operate",
-    text: "We run what we ship: hosting, billing, support and updates. A product is not finished at launch, so neither are we.",
+    text: "We run what we ship: hosting, support and updates. A product is not finished at launch, so neither are we.",
   },
 ];
 
