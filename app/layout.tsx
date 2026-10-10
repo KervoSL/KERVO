@@ -29,7 +29,7 @@ export const metadata: Metadata = {
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.svg",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",
@@ -58,7 +58,7 @@ const organization = {
   name: SITE_NAME,
   legalName: LEGAL_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/icon-512.svg`,
+  logo: `${SITE_URL}/icon-512.png`,
   slogan: TAGLINE,
   description: DESCRIPTION,
   sameAs: [GITHUB_URL],

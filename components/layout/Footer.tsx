@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { KMark } from "@/components/ui/Icons";
+import Newsletter from "@/components/ui/Newsletter";
 import { PRODUCTS } from "@/lib/products";
 import { CONTACT_EMAIL, GITHUB_URL, LEGAL_LINKS, LEGAL_NAME } from "@/lib/site";
 
@@ -9,7 +10,19 @@ export default function Footer() {
   return (
     <footer className="border-t border-line bg-surface">
       <div className="container-x pb-10 pt-16 md:pt-20">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-12">
+        <div className="relative grid gap-8 border-b border-line pb-14 md:grid-cols-12 md:gap-12 md:pb-16">
+          <div className="md:col-span-6">
+            <h2 className="t-h3 max-w-[16em]">News from Kervo, in your inbox.</h2>
+            <p className="t-body mt-3 max-w-[28rem]">
+              Updates on MoneyNest, TradeVault and the products we build next.
+            </p>
+          </div>
+          <div className="md:col-span-5 md:col-start-8">
+            <Newsletter />
+          </div>
+        </div>
+
+        <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-12 md:mt-16 md:grid-cols-12">
           <div className="col-span-2 md:col-span-5">
             <Link href="/" className="inline-flex items-center gap-2.5" aria-label="Kervo, home">
               <KMark size={24} />

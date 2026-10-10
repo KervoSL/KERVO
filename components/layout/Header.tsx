@@ -18,9 +18,12 @@ export default function Header() {
   // Lock page scroll while the menu is open; close on Escape and when the
   // viewport grows past the mobile breakpoint.
   useEffect(() => {
-    document.documentElement.style.overflow = open ? "hidden" : "";
+    const lock = open ? "hidden" : "";
+    document.documentElement.style.overflow = lock;
+    document.body.style.overflow = lock;
     return () => {
       document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
     };
   }, [open]);
 
@@ -39,6 +42,7 @@ export default function Header() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
+    <>
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-[rgba(245,246,248,0.86)] backdrop-blur-xl">
       <div className="container-x flex h-[var(--header-h)] items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5" aria-label="Kervo, home">
@@ -87,10 +91,11 @@ export default function Header() {
         </button>
       </div>
 
+    </header>
       <div
         id="mobile-nav"
         aria-hidden={!open}
-        className={`fixed inset-x-0 bottom-0 top-[var(--header-h)] overflow-y-auto bg-paper transition-[opacity,visibility,transform] duration-500 ease-out md:hidden ${
+        className={`fixed inset-x-0 bottom-0 top-[var(--header-h)] z-40 overflow-y-auto overscroll-contain bg-paper pb-[env(safe-area-inset-bottom)] transition-[opacity,visibility,transform] duration-500 ease-out md:hidden ${
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"
         }`}
       >
@@ -135,6 +140,6 @@ export default function Header() {
           </div>
         </nav>
       </div>
-    </header>
+    </>
   );
 }
