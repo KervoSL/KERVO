@@ -22,8 +22,16 @@ export default function TradeVaultPage() {
   return (
     <>
       <JsonLd data={breadcrumbs([{ name: "Products", path: "/products" }, { name: "TradeVault", path: "/products/tradevault" }])} />
-      <section className="stage">
-        <div className="container-x pb-20 pt-14 md:pb-32 md:pt-24 lg:pt-28">
+      <section className="stage relative overflow-hidden">
+        <svg
+          viewBox="12 16 43 32"
+          fill="currentColor"
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-[12%] top-1/2 w-[min(90vw,620px)] -translate-y-1/2 text-white/[0.045] lg:right-[3%]"
+        >
+          <path d="M12 16h22v7h-7.5v25h-7V23H12v-7zm14.5 0h8l6 20.5L47 16h8L45.5 48h-8.5L26.5 16z" />
+        </svg>
+        <div className="container-x relative pb-20 pt-14 md:pb-32 md:pt-24 lg:pt-28">
           <div className="rise flex items-center gap-4" style={step(0)}>
             <Image
               src={product.logo.src}
