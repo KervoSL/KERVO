@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
-import ClosingCta from "@/components/home/ClosingCta";
+import Newsletter from "@/components/ui/Newsletter";
 import JsonLd from "@/components/ui/JsonLd";
 import { breadcrumbs, pageMeta } from "@/lib/seo";
 import { getProduct } from "@/lib/products";
@@ -83,7 +83,23 @@ export default function TradeVaultPage() {
         </div>
       </section>
 
-      <ClosingCta title="Want to hear when TradeVault is ready?" />
+      <section className="border-t border-line" aria-labelledby="tv-waitlist">
+        <div className="container-x section">
+          <div className="grid gap-10 md:grid-cols-12 md:gap-12">
+            <div className="md:col-span-6">
+              <h2 id="tv-waitlist" className="t-h2 max-w-[14em]">
+                Want to hear when TradeVault is ready?
+              </h2>
+              <p className="t-body mt-5 max-w-[28rem]">
+                Leave your email and we will tell you when it launches. You can also write to us from the contact page.
+              </p>
+            </div>
+            <div className="md:col-span-5 md:col-start-8">
+              <Newsletter list="tradevault" idPrefix="tv" />
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

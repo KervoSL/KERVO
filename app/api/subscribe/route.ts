@@ -11,7 +11,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
  * the endpoint answers 503 and nothing is collected.
  */
 export async function POST(req: Request) {
-  let body: { email?: unknown; company?: unknown; consent?: unknown };
+  let body: { email?: unknown; company?: unknown; consent?: unknown; list?: unknown };
   try {
     body = await req.json();
   } catch {
@@ -31,6 +31,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "consent_required" }, { status: 400 });
   }
 
+  const LISTS = new Set(["website", "moneynest", "tradevault"]);
+  const list = typeof body.list === "string" && LISTS.has(body.list) ? body.list : "website";
+
   const key = process.env.BUTTONDOWN_API_KEY;
   if (!key) {
     return NextResponse.json({ error: "not_configured" }, { status: 503 });
@@ -40,7 +43,7 @@ export async function POST(req: Request) {
     const res = await fetch("https://api.buttondown.email/v1/subscribers", {
       method: "POST",
       headers: { Authorization: `Token ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ email_address: email, tags: ["website"] }),
+      body: JSON.stringify({ email_address: email, tags: list === "website" ? ["website"] : ["website", list] }),
     });
     if (res.ok) return NextResponse.json({ ok: true });
     const data = await res.json().catch(() => ({}));

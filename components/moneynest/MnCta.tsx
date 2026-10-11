@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
+import Newsletter from "@/components/ui/Newsletter";
 import { MONEYNEST_URL, PRODUCTS } from "@/lib/products";
 
 export default function MnCta() {
@@ -35,6 +36,16 @@ export default function MnCta() {
             <ButtonLink href="/products" variant="ghost-light">
               All products
             </ButtonLink>
+          </div>
+        </div>
+
+        <div className="mt-16 grid gap-8 border-t border-stage-line pt-10 md:mt-24 md:grid-cols-12 md:gap-12 md:pt-12">
+          <div className="md:col-span-6">
+            <h3 className="t-h3">Follow what changes in MoneyNest.</h3>
+            <p className="t-body mt-3 max-w-[28rem]">Get an email when we ship something new.</p>
+          </div>
+          <div className="md:col-span-5 md:col-start-8">
+            <Newsletter list="moneynest" idPrefix="mn" tone="dark" />
           </div>
         </div>
       </div>

@@ -34,15 +34,15 @@ function Feature({ product }: { product: Product }) {
         <div className="relative hidden md:block lg:col-span-7 lg:-mr-24 xl:-mr-32">
           <Parallax speed={0.035} className="translate-y-10 lg:translate-y-16">
             <BrowserFrame
-              src="/moneynest/desktop-dashboard.webp"
-              alt="MoneyNest dashboard showing net worth, accounts, assets, debts and financial health"
+              src="/moneynest/desktop-presupuestos.webp"
+              alt="MoneyNest budgets screen with category limits and progress bars"
               sizes="(min-width: 1280px) 720px, (min-width: 768px) 90vw, 100vw"
             />
           </Parallax>
           <Parallax speed={0.09} className="absolute -bottom-16 left-[-3%] w-[22%] min-w-[130px] max-w-[200px]">
             <PhoneFrame
-              src="/moneynest/mobile-dashboard.webp"
-              alt="MoneyNest dashboard on a phone"
+              src="/moneynest/mobile-gastos.webp"
+              alt="MoneyNest expenses screen on a phone"
               sizes="190px"
             />
           </Parallax>
@@ -52,8 +52,8 @@ function Feature({ product }: { product: Product }) {
         <div className="relative md:hidden">
           <Parallax speed={0.04} className="mx-auto -mb-24 w-[64%] max-w-[260px]">
             <PhoneFrame
-              src="/moneynest/mobile-dashboard.webp"
-              alt="MoneyNest dashboard on a phone"
+              src="/moneynest/mobile-gastos.webp"
+              alt="MoneyNest expenses screen on a phone"
               sizes="260px"
             />
           </Parallax>

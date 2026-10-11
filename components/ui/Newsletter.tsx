@@ -5,7 +5,16 @@ import Link from "next/link";
 
 type State = "idle" | "loading" | "done" | "error";
 
-export default function Newsletter() {
+export default function Newsletter({
+  list = "website",
+  idPrefix = "nl",
+  tone = "light",
+}: {
+  list?: "website" | "moneynest" | "tradevault";
+  idPrefix?: string;
+  tone?: "light" | "dark";
+}) {
+  const dark = tone === "dark";
   const [state, setState] = useState<State>("idle");
   const [message, setMessage] = useState("");
 
@@ -23,6 +32,7 @@ export default function Newsletter() {
           email: form.get("email"),
           company: form.get("company"),
           consent: form.get("consent") === "on",
+          list,
         }),
       });
       if (res.ok) {
@@ -48,35 +58,35 @@ export default function Newsletter() {
 
   if (state === "done") {
     return (
-      <div role="status" className="text-[16px] leading-relaxed text-ink">
+      <div role="status" className={`text-[16px] leading-relaxed ${dark ? "text-white" : "text-ink"}`}>
         <p className="font-semibold">You are on the list.</p>
-        <p className="mt-1 text-muted">We will write when there is something worth sharing.</p>
+        <p className={`mt-1 ${dark ? "text-white/70" : "text-muted"}`}>We will write when there is something worth sharing.</p>
       </div>
     );
   }
 
   return (
     <form onSubmit={onSubmit} noValidate className="w-full">
-      <label htmlFor="nl-email" className="sr-only">
+      <label htmlFor={`${idPrefix}-email`} className="sr-only">
         Email address
       </label>
       <div className="flex flex-col gap-3 sm:flex-row">
         <input
-          id="nl-email"
+          id={`${idPrefix}-email`}
           name="email"
           type="email"
           inputMode="email"
           autoComplete="email"
           required
           placeholder="you@example.com"
-          aria-describedby="nl-help"
+          aria-describedby={`${idPrefix}-help`}
           aria-invalid={state === "error" ? true : undefined}
-          className="h-12 min-w-0 rounded-full sm:flex-1 border border-line bg-paper px-5 text-[16px] text-ink placeholder:text-[#6b7385] transition-colors focus:border-ink focus:outline-none"
+          className={`h-12 min-w-0 rounded-full border px-5 text-[16px] transition-colors focus:outline-none sm:flex-1 ${dark ? "border-white/20 bg-white/5 text-white placeholder:text-white/55 focus:border-white/60" : "border-line bg-paper text-ink placeholder:text-[#6b7385] focus:border-ink"}`}
         />
         <button
           type="submit"
           disabled={state === "loading"}
-          className="h-12 rounded-full bg-ink px-6 text-[15px] font-medium text-white transition-opacity hover:opacity-85 disabled:opacity-60"
+          className={`h-12 rounded-full px-6 text-[15px] font-medium transition-opacity hover:opacity-85 disabled:opacity-60 ${dark ? "bg-mint text-[#04120e]" : "bg-ink text-white"}`}
         >
           {state === "loading" ? "Subscribing…" : "Subscribe"}
         </button>
@@ -88,22 +98,22 @@ export default function Newsletter() {
         aria-hidden="true"
         className="absolute -left-[9999px] h-0 w-0 opacity-0"
       />
-      <label className="mt-4 flex items-start gap-3 text-[13px] leading-snug text-muted">
+      <label className={`mt-4 flex items-start gap-3 text-[13px] leading-snug ${dark ? "text-white/70" : "text-muted"}`}>
         <input
           type="checkbox"
           name="consent"
           required
           className="mt-0.5 h-4 w-4 shrink-0 accent-[#0a0f1e]"
         />
-        <span id="nl-help">
+        <span id={`${idPrefix}-help`}>
           I want to receive emails from Kervo. I can unsubscribe at any time. See the{" "}
-          <Link href="/privacy" className="underline underline-offset-2 hover:text-ink">
+          <Link href="/privacy" className={`underline underline-offset-2 ${dark ? "hover:text-white" : "hover:text-ink"}`}>
             Privacy Policy
           </Link>
           .
         </span>
       </label>
-      <p role="alert" className="mt-3 min-h-[1.25rem] text-[14px] text-[#b42318]">
+      <p role="alert" className={`mt-3 min-h-[1.25rem] text-[14px] ${dark ? "text-[#ff9b8f]" : "text-[#b42318]"}`}>
         {state === "error" ? message : ""}
       </p>
     </form>
