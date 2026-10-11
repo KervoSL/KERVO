@@ -25,7 +25,7 @@ export type Product = {
 // Live deployment of MoneyNest. Override with NEXT_PUBLIC_MONEYNEST_URL when a
 // custom domain is attached — this is the only place the link is defined.
 export const MONEYNEST_URL =
-  process.env.NEXT_PUBLIC_MONEYNEST_URL ?? "https://money-nest-nk2u.vercel.app";
+  process.env.NEXT_PUBLIC_MONEYNEST_URL ?? "https://moneynest.es";
 
 export const PRODUCTS: Product[] = [
   {
