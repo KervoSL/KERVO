@@ -3,6 +3,18 @@ import { NextResponse } from "next/server";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+// Best-effort throttle per IP. Serverless instances do not share memory, so this only slows
+// down naive loops; the honeypot and Buttondown's own checks do the rest.
+const hits = new Map<string, number[]>();
+function limited(ip: string) {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < 60_000);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 500) hits.clear();
+  return recent.length > 5;
+}
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /**
@@ -11,6 +23,9 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
  * the endpoint answers 503 and nothing is collected.
  */
 export async function POST(req: Request) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  if (limited(ip)) return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+
   let body: { email?: unknown; company?: unknown; consent?: unknown; list?: unknown };
   try {
     body = await req.json();

@@ -24,8 +24,11 @@ export default function Newsletter({
     const form = new FormData(e.currentTarget);
     setState("loading");
     setMessage("");
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 15000);
     try {
       const res = await fetch("/api/subscribe", {
+        signal: ctrl.signal,
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -48,19 +51,23 @@ export default function Newsletter({
             ? "Tick the box to confirm you want to receive our emails."
             : error === "not_configured"
               ? "Subscriptions are not open yet. Please check back soon."
-              : "We could not sign you up. Try again in a moment.",
+              : error === "rate_limited"
+                ? "Too many attempts. Wait a minute and try again."
+                : "We could not sign you up. Try again in a moment.",
       );
     } catch {
       setState("error");
-      setMessage("No connection. Check your network and try again.");
+      setMessage("We could not reach the server. Check your connection and try again.");
+    } finally {
+      clearTimeout(timer);
     }
   }
 
   if (state === "done") {
     return (
       <div role="status" className={`text-[16px] leading-relaxed ${dark ? "text-white" : "text-ink"}`}>
-        <p className="font-semibold">You are on the list.</p>
-        <p className={`mt-1 ${dark ? "text-white/70" : "text-muted"}`}>We will write when there is something worth sharing.</p>
+        <p className="font-semibold">Thanks, you are signed up.</p>
+        <p className={`mt-1 ${dark ? "text-white/70" : "text-muted"}`}>If we send you a confirmation email, open it to finish subscribing.</p>
       </div>
     );
   }

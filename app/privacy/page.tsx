@@ -28,9 +28,15 @@ export default function PrivacyPage() {
 
       <LegalSection title="2. This website">
         <p>
-          This website does not ask you for personal data, does not use analytics and does not set
-          advertising or tracking cookies. If you write to us, we use your message and email address
-          only to reply to you.
+          This website does not use analytics and does not set advertising or tracking cookies. The
+          only personal data it collects is what you choose to give us: if you write to us, we use your
+          message and email address only to reply to you.
+        </p>
+        <p>
+          If you subscribe to our newsletter, we use your email address to send you updates about
+          Kervo and its products, and only if you have ticked the consent box. Subscriber addresses
+          are stored by our email provider, Buttondown, on our behalf. You can unsubscribe at any
+          time from the link in any email, or by writing to us.
         </p>
         <p>
           Our hosting provider, Vercel, may process technical request data such as your IP address to

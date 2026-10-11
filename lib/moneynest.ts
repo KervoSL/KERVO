@@ -122,7 +122,7 @@ export const MN_TRUST = [
   },
   {
     title: "Funded by its plans",
-    text: "MoneyNest is paid for by its subscription plans. See the privacy policy in the app for the details of how data is handled.",
+    text: "MoneyNest is paid for by its subscription plans.",
   },
 ];
 
@@ -143,7 +143,7 @@ export const MN_PLANS = [
     name: "Pro",
     price: "€2",
     period: "per month, or €19.99 per year",
-    text: "Everything in Local, plus cloud sync and use across multiple devices.",
+    text: "Everything in Local, plus cloud sync and use across multiple devices. Includes a 7-day free trial the first time.",
   },
 ];
 

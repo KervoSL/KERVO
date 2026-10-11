@@ -17,8 +17,9 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
-      - name: Check links
+      - name: Check links and conversion journey
         run: |
           npx next start -p 3000 &
           npx --yes wait-on http://localhost:3000 --timeout 60000
           node scripts/check-links.mjs http://localhost:3000
+          node scripts/check-conversion.mjs http://localhost:3000

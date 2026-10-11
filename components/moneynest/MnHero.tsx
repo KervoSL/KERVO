@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ButtonLink } from "@/components/ui/Button";
 import { BrowserFrame, PhoneFrame } from "@/components/ui/Frames";
 import Parallax from "@/components/ui/Parallax";
@@ -44,6 +45,11 @@ export default function MnHero() {
           {MN_FACTS.map((f) => (
             <li key={f}>{f}</li>
           ))}
+          <li>
+            <Link href="/products/moneynest#pricing" className="link-draw text-stage-text">
+              Plans and prices
+            </Link>
+          </li>
         </ul>
       </div>
 

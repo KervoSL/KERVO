@@ -1,8 +1,10 @@
+import { ButtonLink } from "@/components/ui/Button";
 import { MN_PLANS } from "@/lib/moneynest";
+import { MONEYNEST_URL } from "@/lib/products";
 
 export default function MnPricing() {
   return (
-    <section className="border-t border-line section" aria-labelledby="mn-pricing">
+    <section className="border-t border-line section" id="pricing" aria-labelledby="mn-pricing">
       <div className="container-x">
         <h2 id="mn-pricing" className="t-h2 max-w-[13em]">
           Start free. Pay only if you keep going.
@@ -23,10 +25,14 @@ export default function MnPricing() {
             </div>
           ))}
         </div>
-        <p className="mt-6 text-[14px] text-muted">
-          Plans and prices are managed inside MoneyNest and may change. Prices include the plans as
-          currently offered in the app.
-        </p>
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-[34rem] text-[14px] text-muted">
+            Plans and prices are set inside MoneyNest and may change. The app always shows the current offer.
+          </p>
+          <ButtonLink href={MONEYNEST_URL} external>
+            Start free in MoneyNest
+          </ButtonLink>
+        </div>
       </div>
     </section>
   );

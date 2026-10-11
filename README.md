@@ -44,7 +44,7 @@ See `.env.example`. Nothing is required to build; defaults are used for anything
 
 ## Checks
 
-`.github/workflows/ci.yml` runs lint, build and a link check (`scripts/check-links.mjs`) on every pull request and push to `main`.
+`.github/workflows/ci.yml` runs lint, build, a link check (`scripts/check-links.mjs`) and conversion-journey checks (`scripts/check-conversion.mjs`: canonical MoneyNest domain, CTAs, plans, one newsletter per page, privacy text) on every pull request and push to `main`.
 To run the link check locally: build, start with `npm start`, then `node scripts/check-links.mjs http://localhost:3000`.
 
 ## Deploying

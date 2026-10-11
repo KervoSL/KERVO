@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/ui/Button";
 import { BrowserFrame, PhoneFrame } from "@/components/ui/Frames";
 import Parallax from "@/components/ui/Parallax";
-import { PRODUCTS } from "@/lib/products";
+import { MONEYNEST_URL, PRODUCTS } from "@/lib/products";
 
 const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
@@ -19,9 +19,11 @@ export default function Hero() {
           starting with MoneyNest.
         </p>
         <div className="rise mt-9 flex flex-col gap-3 sm:flex-row md:mt-11" style={step(3)}>
-          <ButtonLink href="/products/moneynest">See MoneyNest</ButtonLink>
-          <ButtonLink href="/about" variant="secondary">
-            Discover Kervo
+          <ButtonLink href={MONEYNEST_URL} external>
+            Try MoneyNest
+          </ButtonLink>
+          <ButtonLink href="/products/moneynest" variant="secondary">
+            See what is inside
           </ButtonLink>
         </div>
 
