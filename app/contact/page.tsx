@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { breadcrumbs, pageMeta } from "@/lib/seo";
 import JsonLd from "@/components/ui/JsonLd";
 import Link from "next/link";
-import { CONTACT_EMAIL, GITHUB_URL } from "@/lib/site";
+import { CONTACT_EMAIL, SOCIALS } from "@/lib/site";
 import { PRODUCTS } from "@/lib/products";
 
 export const metadata: Metadata = pageMeta({
@@ -36,11 +36,14 @@ export default function ContactPage() {
         <div className="border-t border-line pt-6 lg:col-span-4 lg:col-start-9">
           <p className="text-[15px] text-muted">Elsewhere</p>
           <ul className="mt-4 space-y-3 text-[17px]">
-            <li>
-              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="link-draw">
-                GitHub<span className="sr-only"> (opens in a new tab)</span>
-              </a>
-            </li>
+            {SOCIALS.map((s) => (
+              <li key={s.name}>
+                <a href={s.url} target="_blank" rel="noopener noreferrer" className="link-draw">
+                  {s.name}
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              </li>
+            ))}
             {PRODUCTS.map((p) => (
               <li key={p.slug}>
                 <Link href={p.href} className="link-draw">

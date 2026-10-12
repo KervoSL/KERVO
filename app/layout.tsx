@@ -5,7 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/ui/JsonLd";
 import { PRODUCTS } from "@/lib/products";
-import { DESCRIPTION, GITHUB_URL, LEGAL_NAME, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/site";
+import { DESCRIPTION, LEGAL_NAME, SITE_NAME, SITE_URL, SOCIALS, TAGLINE } from "@/lib/site";
 
 const DEFAULT_TITLE = `${SITE_NAME} — A technology company building its own products`;
 
@@ -61,7 +61,7 @@ const organization = {
   logo: `${SITE_URL}/icon-512.png`,
   slogan: TAGLINE,
   description: DESCRIPTION,
-  sameAs: [GITHUB_URL],
+  sameAs: SOCIALS.map((s) => s.url),
 };
 
 const website = {

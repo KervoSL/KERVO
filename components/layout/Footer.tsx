@@ -2,7 +2,7 @@ import Link from "next/link";
 import { KMark } from "@/components/ui/Icons";
 import FooterNewsletter from "@/components/layout/FooterNewsletter";
 import { PRODUCTS } from "@/lib/products";
-import { CONTACT_EMAIL, GITHUB_URL, LEGAL_LINKS, LEGAL_NAME } from "@/lib/site";
+import { CONTACT_EMAIL, LEGAL_LINKS, LEGAL_NAME, SOCIALS } from "@/lib/site";
 
 const linkCls = "link-draw text-[15px] text-muted transition-colors duration-300 hover:text-ink";
 
@@ -57,11 +57,14 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
-              <li>
-                <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className={linkCls}>
-                  GitHub<span className="sr-only"> (opens in a new tab)</span>
-                </a>
-              </li>
+              {SOCIALS.map((s) => (
+                <li key={s.name}>
+                  <a href={s.url} target="_blank" rel="noopener noreferrer" className={linkCls}>
+                    {s.name}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
 

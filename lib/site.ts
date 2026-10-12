@@ -20,8 +20,13 @@ export const TAGLINE =
 export const DESCRIPTION =
   "Kervo is a technology company that designs, builds and operates its own digital products, starting with MoneyNest.";
 
-export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@kervo.com";
-export const GITHUB_URL = "https://github.com/KervoSL";
+export const CONTACT_EMAIL = "hello@kervo.info";
+
+/** Official social profiles, shown in the footer and on the contact page, and listed in structured data. */
+export const SOCIALS = [
+  { name: "Instagram", url: "https://www.instagram.com/kervo.sl/" },
+  { name: "TikTok", url: "https://www.tiktok.com/@kervo_sl" },
+] as const;
 
 export const NAV = [
   { href: "/products", label: "Products" },

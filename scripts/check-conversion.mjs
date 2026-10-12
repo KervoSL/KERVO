@@ -49,6 +49,15 @@ ok(/newsletter/i.test(html["/privacy"]), "/privacy: does not mention the newslet
 // The footer exposes every legal page.
 for (const l of ["/privacy", "/terms", "/cookies", "/legal-notice"]) ok(html["/"].includes(`href="${l}"`), `/: footer is missing ${l}`);
 
+// Official contact details: socials and email, no GitHub link.
+for (const [path, h] of Object.entries(html)) {
+  ok(!/github\.com/i.test(h.replace(/<script[\s\S]*?<\/script>/g, "")), `${path}: should not link to GitHub`);
+}
+for (const u of ["https://www.instagram.com/kervo.sl/", "https://www.tiktok.com/@kervo_sl", "mailto:hello@kervo.info"]) {
+  ok(html["/"].includes(`href="${u}"`), `/: footer is missing ${u}`);
+  ok(html["/contact"].includes(`href="${u}"`), `/contact: missing ${u}`);
+}
+
 // The signup endpoint refuses bad input.
 const post = (body) => fetch(base + "/api/subscribe", { method: "POST", headers: { "Content-Type": "application/json", "x-forwarded-for": "198.51.100." + Math.floor(Math.random() * 250) }, body: JSON.stringify(body) });
 ok((await post({ email: "nope", consent: true })).status === 400, "/api/subscribe: invalid email must return 400");
