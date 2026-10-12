@@ -8,12 +8,10 @@
 const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (vercelHost ? `https://${vercelHost}` : "https://kervo.vercel.app")
+  (vercelHost ? `https://${vercelHost}` : "https://kervo.info")
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Kervo";
-export const LEGAL_NAME = "Kervo SL";
-
 export const TAGLINE =
   "Building products for the way people live, work and manage their world.";
 
@@ -35,23 +33,11 @@ export const NAV = [
 ] as const;
 
 export const LEGAL_LINKS = [
-  { href: "/privacy", label: "Privacy" },
-  { href: "/terms", label: "Terms" },
+  { href: "/privacy", label: "Privacidad" },
+  { href: "/terms", label: "Términos" },
   { href: "/cookies", label: "Cookies" },
-  { href: "/legal-notice", label: "Legal notice" },
+  { href: "/legal-notice", label: "Aviso legal" },
 ] as const;
 
 /** Absolute URL for a site path. */
 export const abs = (path = "/") => `${SITE_URL}${path === "/" ? "" : path}`;
-
-/**
- * Company details required for the legal notice. Left empty on purpose:
- * fill these in with the real registered data — nothing here is invented.
- */
-export const LEGAL_DETAILS: { label: string; value: string | null }[] = [
-  { label: "Company name", value: LEGAL_NAME },
-  { label: "Registered office", value: null },
-  { label: "Tax ID (NIF/CIF)", value: null },
-  { label: "Commercial registry", value: null },
-  { label: "Contact email", value: CONTACT_EMAIL },
-];

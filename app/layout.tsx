@@ -5,7 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/ui/JsonLd";
 import { PRODUCTS } from "@/lib/products";
-import { DESCRIPTION, LEGAL_NAME, SITE_NAME, SITE_URL, SOCIALS, TAGLINE } from "@/lib/site";
+import { DESCRIPTION, SITE_NAME, SITE_URL, SOCIALS, TAGLINE } from "@/lib/site";
 
 const DEFAULT_TITLE = `${SITE_NAME} — A technology company building its own products`;
 
@@ -56,7 +56,6 @@ const organization = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
-  legalName: LEGAL_NAME,
   url: SITE_URL,
   logo: `${SITE_URL}/icon-512.png`,
   slogan: TAGLINE,

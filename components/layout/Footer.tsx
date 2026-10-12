@@ -2,7 +2,7 @@ import Link from "next/link";
 import { KMark } from "@/components/ui/Icons";
 import FooterNewsletter from "@/components/layout/FooterNewsletter";
 import { PRODUCTS } from "@/lib/products";
-import { CONTACT_EMAIL, LEGAL_LINKS, LEGAL_NAME, SOCIALS } from "@/lib/site";
+import { CONTACT_EMAIL, LEGAL_LINKS, SOCIALS } from "@/lib/site";
 
 const linkCls = "link-draw text-[15px] text-muted transition-colors duration-300 hover:text-ink";
 
@@ -83,7 +83,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-2 border-t border-line pt-6 text-[14px] text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} {LEGAL_NAME}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} KERVO. All rights reserved.</p>
           <p>Products designed, built and run by Kervo.</p>
         </div>
       </div>

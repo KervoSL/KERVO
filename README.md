@@ -1,6 +1,6 @@
 # Kervo website
 
-Corporate site of Kervo SL, the company behind MoneyNest and TradeVault. Next.js 14 (App Router), TypeScript, Tailwind CSS.
+Corporate site of KERVO, the brand behind MoneyNest and TradeVault. Next.js 14 (App Router), TypeScript, Tailwind CSS.
 
 ## Run it
 
@@ -39,7 +39,7 @@ See `.env.example`. Nothing is required to build; defaults are used for anything
 
 - Set `NEXT_PUBLIC_SITE_URL` once the final domain is live, then submit `/sitemap.xml` in Google Search Console.
 - Set `BUTTONDOWN_API_KEY` to activate the newsletter and test a real sign-up in production.
-- Fill `LEGAL_DETAILS` in `lib/site.ts` (registered office, tax ID, registry) and have the legal pages reviewed.
+- Fill the `[PENDIENTE: …]` data in `lib/legal.ts` (holder, NIF, address, registry) and have the legal pages reviewed.
 - Confirm the MoneyNest prices in `lib/moneynest.ts`.
 
 ## Checks

@@ -6,7 +6,6 @@ import Image from "next/image";
 import Process from "@/components/home/Process";
 import ClosingCta from "@/components/home/ClosingCta";
 import { PRODUCTS } from "@/lib/products";
-import { LEGAL_NAME } from "@/lib/site";
 
 export const metadata: Metadata = pageMeta({
   title: 'About',
@@ -54,7 +53,7 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-6 lg:col-span-6 lg:col-start-7">
               <p className="t-lead !text-ink">
-                {LEGAL_NAME} is the company behind MoneyNest and TradeVault. It exists to build digital
+                KERVO is the technology brand behind MoneyNest and TradeVault. It exists to build digital
                 products that solve real, everyday problems with software, automation and technology.
               </p>
               <p className="t-body">

@@ -44,7 +44,7 @@ ok(mn.includes('id="pricing"'), "/products/moneynest: missing #pricing section")
 for (const s of ["€1", "€9.99", "€2", "€19.99", "7-day free trial"]) ok(mn.includes(s), `/products/moneynest: pricing is missing "${s}"`);
 
 // The privacy policy must describe the newsletter the site actually runs.
-ok(/newsletter/i.test(html["/privacy"]), "/privacy: does not mention the newsletter");
+ok(/newsletter|bolet[ií]n/i.test(html["/privacy"]), "/privacy: does not mention the newsletter");
 
 // The footer exposes every legal page.
 for (const l of ["/privacy", "/terms", "/cookies", "/legal-notice"]) ok(html["/"].includes(`href="${l}"`), `/: footer is missing ${l}`);
