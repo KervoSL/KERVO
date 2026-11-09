@@ -17,7 +17,7 @@ export default function Statement() {
   return (
     <section className="section border-t border-line" aria-labelledby="statement">
       <div className="container-x">
-        <h2 id="statement" className="t-h2 max-w-[21em]">
+        <h2 id="statement" className="t-h2 max-w-[21em] scroll-mt-14">
           Kervo builds its own digital products. No client work, no agency: every product is ours to
           design, ship and keep improving.
         </h2>

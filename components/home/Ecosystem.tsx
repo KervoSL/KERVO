@@ -29,7 +29,7 @@ export default function Ecosystem() {
     <section className="section border-t border-line" aria-labelledby="ecosystem">
       <div className="container-x">
         <div className="max-w-[40rem]">
-          <h2 id="ecosystem" className="t-h2">
+          <h2 id="ecosystem" className="t-h2 scroll-mt-14">
             One company. A growing family of products.
           </h2>
           <p className="t-lead mt-6">
