@@ -31,7 +31,7 @@ export function ButtonLink({
   className = "",
   onClick,
 }: Props) {
-  const cls = `group inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors duration-300 ${
+  const cls = `group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-colors duration-300 ${
     size === "sm" ? "px-4 py-2 text-[14px]" : "px-6 py-3.5 text-[15px]"
   } ${VARIANTS[variant]} ${className}`;
 

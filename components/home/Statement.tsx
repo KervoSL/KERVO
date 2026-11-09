@@ -17,14 +17,18 @@ export default function Statement() {
   return (
     <section className="section border-t border-line" aria-labelledby="statement">
       <div className="container-x">
-        <h2 id="statement" className="t-h2 max-w-[21em] scroll-mt-14">
+        <span className="eyebrow">What we do</span>
+        <h2 id="statement" className="t-h2 max-w-[21em]">
           Kervo builds its own digital products. No client work, no agency: every product is ours to
           design, ship and keep improving.
         </h2>
 
-        <div className="mt-14 grid gap-10 md:mt-24 md:grid-cols-3 md:gap-12">
-          {PILLARS.map((p) => (
-            <div key={p.title} className="border-t border-ink pt-6">
+        <div className="mt-14 grid gap-5 md:mt-20 md:grid-cols-3 md:gap-6">
+          {PILLARS.map((p, i) => (
+            <div key={p.title} className="card">
+              <span className="mb-6 flex h-9 w-9 items-center justify-center rounded-full bg-[#2457f5]/10 text-[13px] font-semibold tabular-nums text-kervo">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <h3 className="t-h3">{p.title}</h3>
               <p className="t-body mt-3">{p.text}</p>
             </div>

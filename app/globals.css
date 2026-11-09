@@ -126,6 +126,34 @@ body {
     color: var(--stage-muted);
   }
 
+  /* ---------- section label and card surface ---------- */
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--blue);
+  }
+  .stage .eyebrow {
+    color: var(--mint);
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 1.25rem;
+    padding: 1.75rem;
+    box-shadow:
+      0 1px 2px rgba(10, 15, 30, 0.04),
+      0 22px 44px -30px rgba(10, 15, 30, 0.2);
+  }
+  @media (min-width: 768px) {
+    .card {
+      padding: 2rem;
+    }
+  }
+
   /* ---------- dark product stage ---------- */
   .stage {
     background: var(--stage);
@@ -146,7 +174,7 @@ body {
   }
 }
 
-/* ---------- split hero: soft light backdrop, plate and orbs ---------- */
+/* ---------- split hero: soft light backdrop and plate ---------- */
 .hero-backdrop {
   background:
     radial-gradient(55% 65% at 88% 18%, rgba(36, 87, 245, 0.13), transparent 62%),
@@ -163,60 +191,6 @@ body {
     0 1px 0 rgba(255, 255, 255, 0.9) inset,
     0 50px 90px -50px rgba(36, 87, 245, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.8);
-}
-.hero-orb {
-  position: absolute;
-  border-radius: 9999px;
-  animation: float 9s ease-in-out infinite;
-}
-.hero-orb-a {
-  top: -2%;
-  left: 4%;
-  width: 3.25rem;
-  height: 3.25rem;
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #9db6ff 45%, #2457f5 100%);
-  box-shadow: 0 18px 30px -12px rgba(36, 87, 245, 0.55);
-}
-.hero-orb-b {
-  top: 14%;
-  right: 2%;
-  width: 2rem;
-  height: 2rem;
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #8df0d8 45%, #00d4aa 100%);
-  box-shadow: 0 14px 24px -10px rgba(0, 212, 170, 0.6);
-  animation-delay: -3s;
-}
-.hero-orb-c {
-  bottom: 6%;
-  left: -2%;
-  width: 2.5rem;
-  height: 2.5rem;
-  background: radial-gradient(circle at 30% 30%, #ffffff 0%, #c9d4ff 50%, #7f95e8 100%);
-  box-shadow: 0 16px 26px -12px rgba(80, 100, 190, 0.5);
-  animation-delay: -6s;
-}
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-.hero-tilt {
-  transform-origin: 30% 50%;
-}
-@media (min-width: 1024px) {
-  .hero-tilt {
-    transform: perspective(2200px) rotateY(-8deg) rotateX(3deg) rotateZ(0.5deg);
-  }
-}
-@media (max-width: 639px) {
-  .hero-orb-a,
-  .hero-orb-c {
-    display: none;
-  }
 }
 
 /* ---------- orchestrated load sequence (hero) ---------- */

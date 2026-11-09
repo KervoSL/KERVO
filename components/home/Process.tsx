@@ -11,7 +11,8 @@ export default function Process({ id = "process" }: { id?: string }) {
   return (
     <section className="section border-t border-line" aria-labelledby={id}>
       <div className="container-x">
-        <h2 id={id} className="t-h2 max-w-[16em] scroll-mt-14">
+        <span className="eyebrow">Process</span>
+        <h2 id={id} className="t-h2 max-w-[16em]">
           How Kervo builds a product.
         </h2>
         <p className="t-lead mt-6 max-w-[36rem]">

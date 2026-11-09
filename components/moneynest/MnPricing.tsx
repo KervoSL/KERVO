@@ -4,18 +4,16 @@ import { MONEYNEST_URL } from "@/lib/products";
 
 export default function MnPricing() {
   return (
-    <section className="border-t border-line section" id="pricing" aria-labelledby="mn-pricing">
+    <section className="section scroll-mt-14 border-t border-line" id="pricing" aria-labelledby="mn-pricing">
       <div className="container-x">
+        <span className="eyebrow">Pricing</span>
         <h2 id="mn-pricing" className="t-h2 max-w-[13em]">
           Start free. Pay only if you keep going.
         </h2>
 
-        <div className="mt-14 grid overflow-hidden rounded-[1.5rem] border border-line bg-surface md:mt-20 md:grid-cols-3">
+        <div className="mt-14 grid gap-5 md:mt-16 md:grid-cols-3 md:gap-6">
           {MN_PLANS.map((p) => (
-            <div
-              key={p.name}
-              className="border-b border-line p-7 last:border-b-0 md:border-b-0 md:border-r md:p-9 md:last:border-r-0"
-            >
+            <div key={p.name} className="card flex flex-col">
               <h3 className="text-[17px] font-semibold">{p.name}</h3>
               <p className="mt-6 text-[clamp(2.5rem,2rem+2vw,3.5rem)] font-semibold leading-none tracking-[-0.04em]">
                 {p.price}
