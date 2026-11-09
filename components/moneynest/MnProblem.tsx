@@ -6,6 +6,7 @@ export default function MnProblem() {
       <div className="container-x">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-6">
+            <span className="eyebrow">The problem</span>
             <h2 id="mn-problem" className="t-h2">
               Personal finance is scattered.
             </h2>

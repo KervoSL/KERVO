@@ -18,8 +18,9 @@ const DASH_POINTS = [
 
 export default function MnShowcase() {
   return (
-    <section className="stage section" id="features" aria-labelledby="mn-dashboard">
+    <section className="stage section scroll-mt-14" id="features" aria-labelledby="mn-dashboard">
       <div className="container-x">
+        <span className="eyebrow">Features</span>
         <h2 id="mn-dashboard" className="t-h2 max-w-[14em]">
           A clear picture, the moment you open it.
         </h2>

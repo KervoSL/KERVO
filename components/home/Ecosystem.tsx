@@ -29,6 +29,7 @@ export default function Ecosystem() {
     <section className="section border-t border-line" aria-labelledby="ecosystem">
       <div className="container-x">
         <div className="max-w-[40rem]">
+          <span className="eyebrow">Ecosystem</span>
           <h2 id="ecosystem" className="t-h2">
             One company. A growing family of products.
           </h2>
@@ -69,7 +70,7 @@ export default function Ecosystem() {
                     <Link
                       href={p.href}
                       style={nodeStyle(i + 1)}
-                      className="eco-node group block h-full rounded-2xl border border-line bg-surface p-6 transition-colors duration-300 hover:border-ink"
+                      className="eco-node group block h-full rounded-2xl border border-line bg-surface p-6 shadow-[0_1px_2px_rgba(10,15,30,0.04),0_22px_44px_-30px_rgba(10,15,30,0.2)] transition-colors duration-300 hover:border-ink"
                     >
                       <div className="flex items-start justify-between gap-4">
                         <Image src={p.logo.src} alt={p.logo.alt} width={48} height={48} className="rounded-[22%]" />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { breadcrumbs, pageMeta } from "@/lib/seo";
 import JsonLd from "@/components/ui/JsonLd";
 import MnHero from "@/components/moneynest/MnHero";
+import MnNav from "@/components/moneynest/MnNav";
 import MnProblem from "@/components/moneynest/MnProblem";
 import MnSolution from "@/components/moneynest/MnSolution";
 import MnShowcase from "@/components/moneynest/MnShowcase";
@@ -36,6 +37,7 @@ export default function MoneyNestPage() {
       <JsonLd data={software} />
       <JsonLd data={breadcrumbs([{ name: "Products", path: "/products" }, { name: "MoneyNest", path: "/products/moneynest" }])} />
       <MnHero />
+      <MnNav />
       <MnProblem />
       <MnSolution />
       <MnShowcase />

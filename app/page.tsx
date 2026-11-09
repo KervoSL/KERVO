@@ -12,6 +12,7 @@ export default function Home() {
       <Statement />
       <section className="section border-t border-line" aria-labelledby="products">
         <div className="container-x">
+          <span className="eyebrow">Products</span>
           <h2 id="products" className="t-h2 mb-12 max-w-[16em] md:mb-16">
             Our products.
           </h2>

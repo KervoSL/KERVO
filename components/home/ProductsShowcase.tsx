@@ -65,7 +65,7 @@ function Feature({ product }: { product: Product }) {
 
 function Secondary({ product }: { product: Product }) {
   return (
-    <article className="flex flex-col rounded-[1.75rem] border border-line bg-surface p-7 md:p-10">
+    <article className="card flex flex-col !rounded-[1.75rem] md:!p-10">
       <div className="flex items-start justify-between gap-4">
         <Image src={product.logo.src} alt={product.logo.alt} width={56} height={56} className="rounded-[22%]" />
         <span className="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1 text-[13px] text-muted">

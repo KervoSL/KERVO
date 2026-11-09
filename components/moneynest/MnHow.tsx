@@ -2,10 +2,11 @@ import { MN_STEPS } from "@/lib/moneynest";
 
 export default function MnHow() {
   return (
-    <section className="section" aria-labelledby="mn-how">
+    <section className="section scroll-mt-14" id="how-it-works" aria-labelledby="mn-how">
       <div className="container-x">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
+            <span className="eyebrow">How it works</span>
             <h2 id="mn-how" className="t-h2 max-w-[11em]">
               From first launch to a full picture.
             </h2>
