@@ -63,7 +63,7 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <ButtonLink href={MONEYNEST_URL} external size="sm">
+          <ButtonLink href={MONEYNEST_URL} external size="sm" track="try-moneynest:header">
             Try MoneyNest
           </ButtonLink>
         </nav>

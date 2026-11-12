@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import ClickTracker from "@/components/ui/ClickTracker";
 import "@fontsource-variable/schibsted-grotesk/index.css";
 import "./globals.css";
 import Header from "@/components/layout/Header";
@@ -91,6 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         <Analytics />
+        <ClickTracker />
       </body>
     </html>
   );

@@ -8,26 +8,27 @@ import { ArrowRight } from "@/components/ui/Icons";
 
 function Feature({ product }: { product: Product }) {
   return (
-    <article className="stage relative overflow-hidden rounded-[1.75rem] md:rounded-[2.25rem]">
+    <article className="relative isolate overflow-hidden rounded-[1.75rem] border border-line md:rounded-[2.25rem]">
+      <div className="hero-backdrop absolute inset-0 -z-10" aria-hidden="true" />
       <div className="grid gap-12 px-6 pt-10 md:px-12 md:pt-14 lg:grid-cols-12 lg:items-end lg:gap-6 lg:px-16 lg:pt-20">
         <div className="lg:col-span-5 lg:pb-24">
-          <Image src={product.logo.src} alt={product.logo.alt} width={56} height={56} className="rounded-[22%] ring-1 ring-white/10" />
+          <Image src={product.logo.src} alt={product.logo.alt} width={56} height={56} className="rounded-[22%] shadow-[0_8px_20px_-10px_rgba(10,15,30,0.5)] ring-1 ring-black/10" />
           <h3 className="mt-8 text-[clamp(2.25rem,1.6rem+2.6vw,3.5rem)] font-semibold leading-[1.02] tracking-[-0.035em]">
             {product.name}
           </h3>
-          <p className="mt-3 text-[clamp(1.125rem,1rem+0.5vw,1.375rem)] text-stage-text">{product.tagline}</p>
+          <p className="mt-3 text-[clamp(1.125rem,1rem+0.5vw,1.375rem)] text-ink">{product.tagline}</p>
           <p className="t-body mt-5 max-w-[30rem]">{product.summary}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href={product.href} variant="mint">
+            <ButtonLink href={product.href}>
               Explore {product.name}
             </ButtonLink>
             {product.appUrl && (
-              <ButtonLink href={product.appUrl} external variant="ghost-light">
+              <ButtonLink href={product.appUrl} external variant="secondary" track="try-moneynest:home-products">
                 Try {product.name}
               </ButtonLink>
             )}
           </div>
-          <p className="mt-8 text-[13px] text-stage-muted">Screens show the real app with its built-in sample data.</p>
+          <p className="mt-8 text-[13px] text-muted">Screens show the real app with its built-in sample data.</p>
         </div>
 
         {/* Desktop and tablet: the dashboard, with the phone layered over it. */}

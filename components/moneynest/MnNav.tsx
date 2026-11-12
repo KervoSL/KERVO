@@ -12,6 +12,7 @@ const ITEMS = [
   { id: "how-it-works", label: "How it works" },
   { id: "privacy", label: "Privacy" },
   { id: "pricing", label: "Pricing" },
+  { id: "faq", label: "FAQ" },
 ] as const;
 
 /**
@@ -79,7 +80,7 @@ export default function MnNav() {
         </nav>
 
         <div className="hidden shrink-0 sm:block">
-          <ButtonLink href={MONEYNEST_URL} external variant="secondary" size="sm">
+          <ButtonLink href={MONEYNEST_URL} external variant="secondary" size="sm" track="try-moneynest:mn-menu">
             Open the app
           </ButtonLink>
         </div>

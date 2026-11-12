@@ -20,6 +20,8 @@ type Props = {
   external?: boolean;
   className?: string;
   onClick?: () => void;
+  /** Analytics event, "name:place". Counted by ClickTracker. */
+  track?: string;
 };
 
 export function ButtonLink({
@@ -30,6 +32,7 @@ export function ButtonLink({
   external = false,
   className = "",
   onClick,
+  track,
 }: Props) {
   const cls = `group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-colors duration-300 ${
     size === "sm" ? "px-4 py-2 text-[14px]" : "px-6 py-3.5 text-[15px]"
@@ -37,7 +40,7 @@ export function ButtonLink({
 
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={cls} onClick={onClick}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className={cls} onClick={onClick} data-track={track}>
         {children}
         <ArrowUpRight
           size={size === "sm" ? 14 : 16}
@@ -48,7 +51,7 @@ export function ButtonLink({
     );
   }
   return (
-    <Link href={href} className={cls} onClick={onClick}>
+    <Link href={href} className={cls} onClick={onClick} data-track={track}>
       {children}
       <ArrowRight
         size={size === "sm" ? 14 : 16}
