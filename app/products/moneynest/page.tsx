@@ -9,7 +9,9 @@ import MnShowcase from "@/components/moneynest/MnShowcase";
 import MnHow from "@/components/moneynest/MnHow";
 import MnTrust from "@/components/moneynest/MnTrust";
 import MnPricing from "@/components/moneynest/MnPricing";
+import MnFaq from "@/components/moneynest/MnFaq";
 import MnCta from "@/components/moneynest/MnCta";
+import { MN_FAQ } from "@/lib/moneynest";
 import { MONEYNEST_URL } from "@/lib/products";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 
@@ -31,10 +33,21 @@ const software = {
   publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
 };
 
+const faq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: MN_FAQ.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function MoneyNestPage() {
   return (
     <>
       <JsonLd data={software} />
+      <JsonLd data={faq} />
       <JsonLd data={breadcrumbs([{ name: "Products", path: "/products" }, { name: "MoneyNest", path: "/products/moneynest" }])} />
       <MnHero />
       <MnNav />
@@ -44,6 +57,7 @@ export default function MoneyNestPage() {
       <MnHow />
       <MnTrust />
       <MnPricing />
+      <MnFaq />
       <MnCta />
     </>
   );

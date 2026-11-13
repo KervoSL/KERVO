@@ -51,6 +51,7 @@ export async function POST(req: Request) {
 
   const key = process.env.BUTTONDOWN_API_KEY;
   if (!key) {
+    console.error("[subscribe] BUTTONDOWN_API_KEY is not set in this environment");
     return NextResponse.json({ error: "not_configured" }, { status: 503 });
   }
 
@@ -66,8 +67,17 @@ export async function POST(req: Request) {
     if (res.status === 400 && (text.includes("already") || text.includes("exists"))) {
       return NextResponse.json({ ok: true });
     }
+    // Visible in the hosting logs. Never log the email address or the key.
+    // 401/403 usually means a wrong or unverified API key; 400 a rejected address.
+    console.error("[subscribe] Buttondown rejected the request", {
+      status: res.status,
+      detail: text.slice(0, 300),
+    });
     return NextResponse.json({ error: "provider" }, { status: 502 });
-  } catch {
+  } catch (err) {
+    console.error("[subscribe] Could not reach Buttondown", {
+      reason: err instanceof Error ? err.message : "unknown",
+    });
     return NextResponse.json({ error: "provider" }, { status: 502 });
   }
 }

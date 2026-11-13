@@ -30,7 +30,7 @@ export default function MnCta() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:col-span-4 lg:justify-end">
-            <ButtonLink href={MONEYNEST_URL} external variant="mint">
+            <ButtonLink href={MONEYNEST_URL} external variant="mint" track="try-moneynest:mn-closing">
               Try MoneyNest
             </ButtonLink>
             <ButtonLink href="/products" variant="ghost-light">

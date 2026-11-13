@@ -126,24 +126,67 @@ export const MN_TRUST = [
   },
 ];
 
-export const MN_PLANS = [
+export type MnPlan = {
+  name: string;
+  /** Price per billing period. A plan with no yearly price shows the same one in both. */
+  monthly: { price: string; period: string };
+  yearly: { price: string; period: string };
+  text: string;
+  /** Short label shown on the card. */
+  badge?: string;
+};
+
+export const MN_PLANS: MnPlan[] = [
   {
     name: "Free trial",
-    price: "€0",
-    period: "",
-    text: "100 movements to try every screen. No card required.",
+    monthly: { price: "€0", period: "No card required" },
+    yearly: { price: "€0", period: "No card required" },
+    text: "100 movements to try every screen.",
   },
   {
     name: "Local",
-    price: "€1",
-    period: "per month, or €9.99 per year",
+    monthly: { price: "€1", period: "per month" },
+    yearly: { price: "€9.99", period: "per year" },
     text: "Unlimited movements. Your data stays on your device and the app works offline. PDF and Excel export.",
   },
   {
     name: "Pro",
-    price: "€2",
-    period: "per month, or €19.99 per year",
+    monthly: { price: "€2", period: "per month" },
+    yearly: { price: "€19.99", period: "per year" },
     text: "Everything in Local, plus cloud sync and use across multiple devices. Includes a 7-day free trial the first time.",
+    badge: "Includes sync",
+  },
+];
+
+/** Questions answered only with what the sections above already state. */
+export const MN_FAQ = [
+  {
+    q: "Do I need an account to use MoneyNest?",
+    a: "No. In Local mode you can use the app fully offline and without an account. An account is only needed for cloud sync with Pro.",
+  },
+  {
+    q: "Where is my financial data stored?",
+    a: "In Local mode it is stored on your own device. With a Pro account your data syncs to the cloud so you can use several devices, and access is restricted per user with row-level security.",
+  },
+  {
+    q: "Do I have to connect my bank?",
+    a: "No bank connection is needed. You can enter movements with guided wizards, or import a CSV or Excel statement. MoneyNest suggests categories, flags duplicates and shows a preview before importing.",
+  },
+  {
+    q: "Can I export my data?",
+    a: "Yes. You can export a PDF report, an Excel workbook or a JSON backup, plus CSV files for each section.",
+  },
+  {
+    q: "How much does it cost?",
+    a: "You can start free with 100 movements and no card. Local is €1 per month or €9.99 per year, and Pro is €2 per month or €19.99 per year, with a 7-day free trial the first time. Plans and prices are set inside MoneyNest and may change.",
+  },
+  {
+    q: "Who processes the payments?",
+    a: "Stripe. MoneyNest does not see or store your card number.",
+  },
+  {
+    q: "Is the app available in my language?",
+    a: "MoneyNest is available in 7 languages and can be installed as an app.",
   },
 ];
 

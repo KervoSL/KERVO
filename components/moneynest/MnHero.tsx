@@ -46,7 +46,7 @@ export default function MnHero() {
           </p>
 
           <div className="rise mt-8 flex flex-col gap-3 sm:flex-row md:mt-9" style={step(3)}>
-            <ButtonLink href={MONEYNEST_URL} external>
+            <ButtonLink href={MONEYNEST_URL} external track="try-moneynest:mn-hero">
               Try MoneyNest
             </ButtonLink>
             <ButtonLink href="/products/moneynest#features" variant="secondary">
